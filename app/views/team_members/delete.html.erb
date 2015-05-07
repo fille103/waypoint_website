@@ -1,0 +1,33 @@
+<%= link_to("<< Back to List", {:action => 'index'}, :class => 'back-link') %>
+
+<div class="team_members delete">
+    <h2>Confirm Deletion</h2>
+
+    <table summary="Team member detail view">
+        <tr>
+            <th>ID</th>
+            <td><%= @team_member.id %></td>
+        </tr>
+        <tr>
+            <th>Last Name</th>
+            <td><%= @team_member.last_name %></td>
+        </tr>
+        <tr>
+            <th>First Name</th>
+            <td><%= @team_member.first_name %></td>
+        </tr>
+        <tr>
+            <th>Admin ID</th>
+            <td><%= @team_member.admin_id %></td>
+        </tr>
+    </table>
+
+    <%= form_for(:team_member, :url => {:action => 'destroy', :id => @team_member.id}) do |f| %>
+
+    <div class="form-buttons">
+        <%= submit_tag("Delete Team Member") %>
+    </div>
+
+    <% end %>
+
+</div>

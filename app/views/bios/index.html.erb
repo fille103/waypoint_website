@@ -1,0 +1,31 @@
+<%= link_to("<< Back to Team Members", {:controller => 'team_members', :action => 'index'}, :class => 'back-link') %>
+
+<% @page_title = "Bios" %>
+
+<div class="bios index">
+    <h2>Biographies</h2>
+        <%=  %>
+
+        <%= link_to(image_tag('plus_sign.png', :size=>'11x11', :alt => '+') + " Add New Biography", {:action => 'new', :team_member_id => @team_member.id}, :class => 'action new') %>
+
+    <table class="listing" summary="Biographies">
+        <tr class="header">
+            <th>ID</th>
+            <th>Biography</th>
+            <th>Team Member ID</th>
+            <th>Actions</th>
+        </tr>
+        <% @bios.each do |bio| %>
+        <tr>
+            <td><%= bio.id %></td>
+            <td><%= bio.biography %></td>
+            <td><%= bio.team_member_id %></td>
+            <td class="actions">
+                <%= link_to("Show", {:action => 'show' , :id => bio.id, :team_member_id => @team_member.id},  :class => 'action show') %>
+                <%= link_to("Edit",{:action => 'edit' , :id => bio.id, :team_member_id => @team_member.id}, :class => 'action edit') %>
+                <%= link_to("Delete", {:action => 'delete', :id => bio.id, :team_member_id => @team_member.id}, :class => 'action delete') %>
+            </td>
+        </tr>
+        <% end %>
+    </table>
+</div>

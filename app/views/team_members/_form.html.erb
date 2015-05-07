@@ -1,0 +1,22 @@
+<table summary="Team member form fields">
+    <tr>
+        <th><%= f.label(:first_name, "First Name") %></th>
+        <td><%= f.text_field(:first_name) %></td>
+    </tr>
+    <tr>
+        <th><%= f.label(:last_name, "Last Name") %></th>
+        <td><%= f.text_field(:last_name) %></td>
+    </tr>
+    <tr>
+        <th><%= f.label(:admin_id, "Admin ID") %></th>
+        <td><%= f.text_field(:admin_id) %></td>
+    </tr>
+    <!--
+    <tr>
+        <%= fields_for(:bio) do |u| %>
+            <th><%= u.label(:biography, "Biography") %></th>
+            <td><%= u.text_field(:biography) %></td>
+        <% end %>
+    </tr>
+    -->
+</table>
