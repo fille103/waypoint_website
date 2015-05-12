@@ -1,9 +1,9 @@
-<%= link_to("<< Back to List", {:action => 'index'}, :class => 'back-link') %>
+<%= link_to("<< Back to List", {:action => 'index', :admin_id => @admin.id}, :class => 'back-link') %>
 
 <div class="team_members edit">
     <h2>Update Team Member</h2>
 
-    <%= form_for(:team_member, :url => {:action => 'update', :id => @team_member_id}) do |f| %>
+    <%= form_for(:team_member, :url => {:action => 'update', :id => @team_member.id, :admin_id => @admin.id}) do |f| %>
     <%= render(:partial => "form", :locals => {:f => f}) %>
 
     <div class="form-buttons">

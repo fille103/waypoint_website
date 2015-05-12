@@ -1,8 +1,9 @@
 class CreateBios < ActiveRecord::Migration
     def up
         create_table :bios do |t|
-            t.string "biography", null: false
+            t.text "biography", null: false
             t.integer "team_member_id", null: false
+            t.integer "admin_id", null: false
             
             t.timestamps null: false
         end

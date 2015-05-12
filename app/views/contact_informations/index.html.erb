@@ -1,0 +1,42 @@
+<%= link_to("<< Back to Admins", {:controller => 'admins', :action => 'index'}, :class => 'back-link') %>
+
+<% @page_title = "ContactInformation" %>
+
+<div class="contact_information index">
+    <h2>Contact Information</h2>
+        <%=  %>
+
+        <% if @contact_informations.blank? %>
+            <%= link_to(image_tag('plus_sign.png', :size=>'11x11', :alt => '+') + " Create Contact Information", {:action => 'new', :admin_id => @admin.id}, :class => 'action new') %>
+        <% end %>
+
+    <table class="listing" summary="Contact information">
+        <tr class="header">
+            <th>ID</th>
+            <th>Street Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zip</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Admin ID</th>
+        </tr>
+        <% @contact_informations.each do |contact_information| %>
+        <tr>
+            <td><%= contact_information.id %></td>
+            <td><%= contact_information.street_address %></td>
+            <td><%= contact_information.city %></td>
+            <td><%= contact_information.state %></td>
+            <td><%= contact_information.zip %></td>
+            <td><%= contact_information.phone %></td>
+            <td><%= contact_information.email %></td>
+            <td><%= contact_information.admin_id %></td>
+            <td class="actions">
+                <%= link_to("Show", {:action => 'show' , :id => contact_information.id, :admin_id => @admin.id},  :class => 'action show') %>
+                <%= link_to("Edit",{:action => 'edit' , :id => contact_information.id, :admin_id => @admin.id}, :class => 'action edit') %>
+                <%= link_to("Delete", {:action => 'delete', :id => contact_information.id, :admin_id => @admin.id}, :class => 'action delete') %>
+            </td>
+        </tr>
+        <% end %>
+    </table>
+</div>

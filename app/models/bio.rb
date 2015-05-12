@@ -1,7 +1,10 @@
 class Bio < ActiveRecord::Base
-    belongs_to :team_member
-    #acts_as_list :scope => :team_member
+    
     after_save :touch_team_member
+    
+    belongs_to :team_member
+    belongs_to :admin
+    
     validates_presence_of :biography
     
 	scope :visible, lambda {where(:visible => true)}

@@ -1,0 +1,33 @@
+<%= link_to("<< Back to List", {:action => 'index', :registered_user_id => @registered_user.id, :admin_id => @registered_user.admin_id}, :class => 'back-link') %>
+
+<div class="feedbacks delete">
+    <h2>Confirm Deletion</h2>
+
+    <table summary="Feedback detail view">
+        <tr>
+            <th>ID</th>
+            <td><%= @feedback.id %></td>
+        </tr>
+        <tr>
+            <th>Feedback</th>
+            <td><%= @feedback.feedback %></td>
+        </tr>
+        <tr>
+            <th>Registered User ID</th>
+            <td><%= @feedback.registered_user_id %></td>
+        </tr>
+        <tr>
+            <th>Admin ID</th>
+            <td><%= @feedback.admin_id %></td>
+        </tr>
+    </table>
+
+    <%= form_for(:feedback, :url => {:action => 'destroy', :id => @feedback.id, :registered_user_id => @registered_user.id, :admin_id => @registered_user.admin_id}) do |f| %>
+
+    <div class="form-buttons">
+        <%= submit_tag("Delete Feedback") %>
+    </div>
+
+    <% end %>
+
+</div>

@@ -1,0 +1,11 @@
+<%= link_to("<< Back to List", {:action => 'index', :waypoint_feature_id => @waypoint_feature.id, :admin_id => @waypoint_feature.admin_id}, :class => 'back-link') %>
+
+<div class="feature_description new">
+    <h2>Create Feature Description</h2>
+    <%= form_for(:feature_description, :url => {:action => 'create', :waypoint_feature_id => @waypoint_feature.id, :admin_id => @waypoint_feature.admin_id}) do |f| %>
+        <%= render(:partial => "form", :locals => {:f => f}) %>
+        <div class="form-buttons">
+            <%= submit_tag("Create Feature Description") %>
+        </div>
+    <% end %>
+</div>

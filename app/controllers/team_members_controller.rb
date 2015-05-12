@@ -1,9 +1,10 @@
 class TeamMembersController < ApplicationController
     
+    before_action :find_admin
     layout "admin"
     
     def index
-        @team_members = TeamMember.sorted
+        @team_members = @admin.team_members.sorted
     end
     
     def show
@@ -11,23 +12,21 @@ class TeamMembersController < ApplicationController
     end
     
     def new
-        @team_member = TeamMember.new({:first_name => "Default", :last_name => "Default", :admin_id => "0"})
-        #@bio = Bio.new({:biography => "Default", :team_member_id => "0"})
+        @team_member = TeamMember.new({:first_name => "Default", :last_name => "Default", :admin_id => @admin.id})
         @team_member_count = TeamMember.count + 1
     end
     
     def create
         # Instantiate a new object using form parameters
         @team_member = TeamMember.new(team_member_params)
-        #@bio = Bio.new(bio_params)
         # Save the object
         if @team_member.save
             # If save succeeds, redirect to the index action
             flash[:notice] = "Team member created successfully."
-            redirect_to(:action => 'index')
+            redirect_to(:action => 'index', :admin_id => @admin.id)
             else
             # If save fails, redisplay the form so user can fix problems
-            flash[:notice] = "Team member not created successfully."
+            flash[:notice] = "Could not create team member."
             @team_member_count = TeamMember.count + 1
             render('new')
         end
@@ -45,7 +44,7 @@ class TeamMembersController < ApplicationController
         if @team_member.update_attributes(team_member_params)
             # If update succeeds, redirect to the index action
             flash[:notice] = "Team member updated successfully."
-            redirect_to(:action => 'show', :id => @team_member.id)
+            redirect_to(:action => 'show', :id => @team_member.id, :admin_id => @admin.id)
             else
             # If update fails, redisplay the form so user can fix problems
             @team_member_count = TeamMember.count
@@ -61,21 +60,17 @@ class TeamMembersController < ApplicationController
         # Don't need to use an instance variable, can use a local variable
         team_member = TeamMember.find(params[:id]).destroy
         flash[:notice] = "Team member was destroyed successfully."
-        redirect_to(:action => 'index')
+        redirect_to(:action => 'index', :admin_id => @admin.id)
     end
-    
     
     private
     def team_member_params
-        # same as using "params[:speaker]", except that it:
-        # - raises an error if :speaker is not present
-        # - allows listed attributes to be mass-assigned
-        params.require(:team_member).permit(:first_name,:last_name,:admin_id)
+        defaults = {:admin_id => @admin.id}
+        params.require(:team_member).permit(:first_name,:last_name).merge(defaults)
     end
-    def bio_params
-        # same as using "params[:speaker]", except that it:
-        # - raises an error if :speaker is not present
-        # - allows listed attributes to be mass-assigned
-        params.require(:bio).permit(:biography)
+    def find_admin
+        if params[:admin_id]
+            @admin = Admin.find(params[:admin_id])
+        end
     end
 end

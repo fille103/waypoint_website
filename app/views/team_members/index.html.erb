@@ -1,4 +1,4 @@
-<%= link_to("<< Back to Menu", {:controller => 'access', :action => 'index'}, :class => 'back-link') %>
+<%= link_to("<< Back to Admins", {:controller => 'admins', :action => 'index'}, :class => 'back-link') %>
 
 <% @page_title = "TeamMembers" %>
 
@@ -6,7 +6,7 @@
     <h2>Team Members</h2>
         <%=  %>
 
-        <%= link_to(image_tag('plus_sign.png', :size=>'11x11', :alt => '+') + " Add New Team Member", {:action => 'new'}, :class => 'action new') %>
+        <%= link_to(image_tag('plus_sign.png', :size=>'11x11', :alt => '+') + " Add New Team Member", {:action => 'new', :admin_id => @admin.id}, :class => 'action new') %>
 
     <table class="listing" summary="Team members">
         <tr class="header">
@@ -23,10 +23,10 @@
             <td><%= team_member.last_name %></td>
             <td><%= team_member.admin_id %></td>
             <td class="actions">
-                <%= link_to("Biography", {:controller => 'bios', :team_member_id => team_member.id},  :class => 'action show') %>
-                <%= link_to("Show", {:action => 'show' , :id => team_member.id},  :class => 'action show') %>
-                <%= link_to("Edit",{:action => 'edit' , :id => team_member.id}, :class => 'action edit') %>
-                <%= link_to("Delete", {:action => 'delete', :id => team_member.id}, :class => 'action delete') %>
+                <%= link_to("Biography", {:controller => 'bios', :team_member_id => team_member.id, :admin_id => team_member.admin_id},  :class => 'action index') %>
+                <%= link_to("Show", {:action => 'show' , :id => team_member.id, :admin_id => @admin.id},  :class => 'action show') %>
+                <%= link_to("Edit",{:action => 'edit' , :id => team_member.id, :admin_id => @admin.id}, :class => 'action edit') %>
+                <%= link_to("Delete", {:action => 'delete', :id => team_member.id, :admin_id => @admin.id}, :class => 'action delete') %>
             </td>
         </tr>
         <% end %>

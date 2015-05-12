@@ -1,0 +1,49 @@
+<%= link_to("<< Back to List", {:action => 'index', :admin_id => @admin.id}, :class => 'back-link') %>
+
+<div class="contact_information delete">
+    <h2>Confirm Deletion</h2>
+
+    <table summary="Contact information detail view">
+        <tr>
+            <th>ID</th>
+            <td><%= @contact_information.id %></td>
+        </tr>
+        <tr>
+            <th>Street Address</th>
+            <td><%= @contact_information.street_address %></td>
+        </tr>
+        <tr>
+            <th>City</th>
+            <td><%= @contact_information.city %></td>
+        </tr>
+        <tr>
+            <th>State</th>
+            <td><%= @contact_information.state %></td>
+        </tr>
+        <tr>
+            <th>Zip</th>
+            <td><%= @contact_information.zip %></td>
+        </tr>
+        <tr>
+            <th>Phone</th>
+            <td><%= @contact_information.phone %></td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td><%= @contact_information.email %></td>
+        </tr>
+        <tr>
+            <th>Admin ID</th>
+            <td><%= @contact_information.admin_id %></td>
+        </tr>
+    </table>
+
+    <%= form_for(:contact_information, :url => {:action => 'destroy', :id => @contact_information.id, :admin_id => @admin.id}) do |f| %>
+
+    <div class="form-buttons">
+        <%= submit_tag("Delete Contact Information") %>
+    </div>
+
+    <% end %>
+
+</div>

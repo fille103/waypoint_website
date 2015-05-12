@@ -1,0 +1,11 @@
+<%= link_to("<< Back to List", {:action => 'index', :admin_id => @admin.id}, :class => 'back-link') %>
+
+<div class="registered_users new">
+    <h2>Create Registered User</h2>
+    <%= form_for(:registered_user, :url => {:action => 'create', :admin_id => @admin.id}) do |f| %>
+        <%= render(:partial => "form", :locals => {:f => f}) %>
+        <div class="form-buttons">
+            <%= submit_tag("Create Registered User") %>
+        </div>
+    <% end %>
+</div>

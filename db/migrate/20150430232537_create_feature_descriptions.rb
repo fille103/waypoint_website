@@ -3,6 +3,7 @@ class CreateFeatureDescriptions < ActiveRecord::Migration
         create_table :feature_descriptions do |t|
             t.text "description", null: false
             t.integer "waypoint_feature_id", null: false
+            t.integer "admin_id", null: false
             
             t.timestamps null: false
         end

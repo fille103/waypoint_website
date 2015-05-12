@@ -1,0 +1,33 @@
+<%= link_to("<< Back to List", {:action => 'index', :waypoint_feature_id => @waypoint_feature.id, :admin_id => @waypoint_feature.admin_id}, :class => 'back-link') %>
+
+<div class="feature_description delete">
+    <h2>Confirm Deletion</h2>
+
+    <table summary="Feature description detail view">
+        <tr>
+            <th>ID</th>
+            <td><%= @feature_description.id %></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td><%= @feature_description.description %></td>
+        </tr>
+        <tr>
+            <th>Waypoint Feature ID</th>
+            <td><%= @feature_description.waypoint_feature_id %></td>
+        </tr>
+        <tr>
+            <th>Admin ID</th>
+            <td><%= @feature_description.admin_id %></td>
+        </tr>
+    </table>
+
+    <%= form_for(:feature_description, :url => {:action => 'destroy', :id => @feature_description.id, :waypoint_feature_id => @waypoint_feature.id, :admin_id => @waypoint_feature.admin_id}) do |f| %>
+
+    <div class="form-buttons">
+        <%= submit_tag("Delete Feature Description") %>
+    </div>
+
+    <% end %>
+
+</div>

@@ -1,0 +1,41 @@
+<%= link_to("<< Back to List", {:action => 'index', :admin_id => @admin.id}, :class => 'back-link') %>
+
+<div class="registered_users delete">
+    <h2>Confirm Deletion</h2>
+
+    <table summary="Registered user detail view">
+        <tr>
+            <th>ID</th>
+            <td><%= @registered_user.id %></td>
+        </tr>
+        <tr>
+            <th>Username</th>
+            <td><%= @registered_user.username %></td>
+        </tr>
+        <tr>
+            <th>Password</th>
+            <td><%= @registered_user.password %></td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td><%= @registered_user.email %></td>
+        </tr>
+        <tr>
+            <th>Subscribed</th>
+            <td><%= @registered_user.subscribed %></td>
+        </tr>
+        <tr>
+            <th>Admin ID</th>
+            <td><%= @registered_user.admin_id %></td>
+        </tr>
+    </table>
+
+    <%= form_for(:registered_user, :url => {:action => 'destroy', :id => @registered_user.id, :admin_id => @admin.id}) do |f| %>
+
+    <div class="form-buttons">
+        <%= submit_tag("Delete Registered User") %>
+    </div>
+
+    <% end %>
+
+</div>

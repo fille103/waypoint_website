@@ -1,6 +1,6 @@
-<%= link_to("<< Back to List", {:action => 'index', :team_member_id => @team_member.id}, :class => 'back-link') %>
+<%= link_to("<< Back to List", {:action => 'index', :team_member_id => @team_member.id, :admin_id => @team_member.admin_id}, :class => 'back-link') %>
 
-<div class="bios show">
+<div class="bio show">
     <h2>Show Bio</h2>
     <table summary="Bio detail view">
         <tr>
@@ -14,6 +14,10 @@
         <tr>
             <th>Team Member ID</th>
             <td><%= @bio.team_member_id %></td>
+        </tr>
+        <tr>
+            <th>Admin ID</th>
+            <td><%= @bio.admin_id %></td>
         </tr>
         <tr>
             <th>Created</th>

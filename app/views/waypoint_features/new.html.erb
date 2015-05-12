@@ -1,0 +1,11 @@
+<%= link_to("<< Back to List", {:action => 'index', :admin_id => @admin.id}, :class => 'back-link') %>
+
+<div class="waypoint_features new">
+    <h2>Create Waypoint Feature</h2>
+    <%= form_for(:waypoint_feature, :url => {:action => 'create', :admin_id => @admin.id}) do |f| %>
+        <%= render(:partial => "form", :locals => {:f => f}) %>
+        <div class="form-buttons">
+            <%= submit_tag("Create Waypoint Feature") %>
+        </div>
+    <% end %>
+</div>

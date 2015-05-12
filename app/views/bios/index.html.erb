@@ -1,18 +1,21 @@
-<%= link_to("<< Back to Team Members", {:controller => 'team_members', :action => 'index'}, :class => 'back-link') %>
+<%= link_to("<< Back to Team Members", {:controller => 'team_members', :action => 'index', :admin_id => @team_member.admin_id}, :class => 'back-link') %>
 
-<% @page_title = "Bios" %>
+<% @page_title = "Bio" %>
 
-<div class="bios index">
-    <h2>Biographies</h2>
+<div class="bio index">
+    <h2>Biography</h2>
         <%=  %>
 
-        <%= link_to(image_tag('plus_sign.png', :size=>'11x11', :alt => '+') + " Add New Biography", {:action => 'new', :team_member_id => @team_member.id}, :class => 'action new') %>
+        <% if @bios.blank? %>
+            <%= link_to(image_tag('plus_sign.png', :size=>'11x11', :alt => '+') + " Create Biography", {:action => 'new', :team_member_id => @team_member.id, :admin_id => @team_member.admin_id}, :class => 'action new') %>
+        <% end %>
 
-    <table class="listing" summary="Biographies">
+    <table class="listing" summary="Bio">
         <tr class="header">
             <th>ID</th>
             <th>Biography</th>
             <th>Team Member ID</th>
+            <th>Admin ID</th>
             <th>Actions</th>
         </tr>
         <% @bios.each do |bio| %>
@@ -20,10 +23,11 @@
             <td><%= bio.id %></td>
             <td><%= bio.biography %></td>
             <td><%= bio.team_member_id %></td>
+            <td><%= bio.admin_id %></td>
             <td class="actions">
-                <%= link_to("Show", {:action => 'show' , :id => bio.id, :team_member_id => @team_member.id},  :class => 'action show') %>
-                <%= link_to("Edit",{:action => 'edit' , :id => bio.id, :team_member_id => @team_member.id}, :class => 'action edit') %>
-                <%= link_to("Delete", {:action => 'delete', :id => bio.id, :team_member_id => @team_member.id}, :class => 'action delete') %>
+                <%= link_to("Show", {:action => 'show' , :id => bio.id, :team_member_id => @team_member.id, :admin_id => @team_member.admin_id},  :class => 'action show') %>
+                <%= link_to("Edit",{:action => 'edit' , :id => bio.id, :team_member_id => @team_member.id, :admin_id => @team_member.admin_id}, :class => 'action edit') %>
+                <%= link_to("Delete", {:action => 'delete', :id => bio.id, :team_member_id => @team_member.id, :admin_id => @team_member.admin_id}, :class => 'action delete') %>
             </td>
         </tr>
         <% end %>
