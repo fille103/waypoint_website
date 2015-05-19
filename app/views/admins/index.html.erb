@@ -21,10 +21,7 @@
             <td><%= admin.username %></td>
             <td><%= admin.password_digest %></td>
             <td class="actions">
-                <%= link_to("Waypoint Features", {:controller => 'waypoint_features', :admin_id => admin.id},  :class => 'action index') %>
-                <%= link_to("Registered Users", {:controller => 'registered_users', :admin_id => admin.id},  :class => 'action index') %>
-                <%= link_to("Team Members", {:controller => 'team_members', :admin_id => admin.id},  :class => 'action index') %>
-                <%= link_to("Contact Information", {:controller => 'contact_informations', :admin_id => admin.id},  :class => 'action index') %>
+                <%= link_to("Team Member", {:controller => 'team_members', :admin_id => admin.id},  :class => 'action index') %>
                 <%= link_to("Show", {:action => 'show' , :id => admin.id},  :class => 'action show') %>
                 <%= link_to("Edit",{:action => 'edit' , :id => admin.id}, :class => 'action edit') %>
                 <%= link_to("Delete", {:action => 'delete', :id => admin.id}, :class => 'action delete') %>
