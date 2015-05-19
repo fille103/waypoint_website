@@ -7,10 +7,10 @@ class CreateContactInformations < ActiveRecord::Migration
             t.integer "zip", null: false
             t.integer "phone", null: false
             t.string "email", null: false
-            t.integer "admin_id", null: false
             
             t.timestamps null: false
         end
+        add_index("contact_informations", "state")
     end
     def down
         drop_table :contact_informations

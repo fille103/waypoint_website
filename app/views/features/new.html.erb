@@ -1,0 +1,11 @@
+<%= link_to("<< Back to List", {:action => 'index', :version_id => @version.id}, :class => 'back-link') %>
+
+<div class="features new">
+    <h2>Create Feature</h2>
+    <%= form_for(:feature, :url => {:action => 'create', :version_id => @version.id}) do |f| %>
+        <%= render(:partial => "form", :locals => {:f => f}) %>
+        <div class="form-buttons">
+            <%= submit_tag("Create Feature") %>
+        </div>
+    <% end %>
+</div>

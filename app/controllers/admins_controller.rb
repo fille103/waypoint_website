@@ -2,6 +2,8 @@ class AdminsController < ApplicationController
     
     layout "admin"
     
+    #before_action :confirm_logged_in
+    
     def index
         @admins = Admin.sorted
     end
@@ -11,7 +13,7 @@ class AdminsController < ApplicationController
     end
     
     def new
-        @admin = Admin.new({:username => "WaypointAdmin", :password => "Default"})
+        @admin = Admin.new({:username => "Admin",:email => "admin@email.com"})
         @admin_count = Admin.count + 1
     end
     
@@ -65,6 +67,6 @@ class AdminsController < ApplicationController
     
     private
     def admin_params
-        params.require(:admin).permit(:username,:password)
+        params.require(:admin).permit(:username,:password,:email)
     end
 end

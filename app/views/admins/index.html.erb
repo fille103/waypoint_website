@@ -12,14 +12,14 @@
         <tr class="header">
             <th>ID</th>
             <th>Username</th>
-            <th>Password</th>
+            <th>Encrypted Password</th>
             <th>Actions</th>
         </tr>
         <% @admins.each do |admin| %>
         <tr>
             <td><%= admin.id %></td>
             <td><%= admin.username %></td>
-            <td><%= admin.password %></td>
+            <td><%= admin.password_digest %></td>
             <td class="actions">
                 <%= link_to("Waypoint Features", {:controller => 'waypoint_features', :admin_id => admin.id},  :class => 'action index') %>
                 <%= link_to("Registered Users", {:controller => 'registered_users', :admin_id => admin.id},  :class => 'action index') %>

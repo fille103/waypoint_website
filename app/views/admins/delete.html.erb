@@ -13,8 +13,12 @@
             <td><%= @admin.username %></td>
         </tr>
         <tr>
-            <th>Password</th>
-            <td><%= @admin.password %></td>
+            <th>Encrypted Password</th>
+            <td><%= @admin.password_digest %></td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td><%= @admin.email %></td>
         </tr>
     </table>
 

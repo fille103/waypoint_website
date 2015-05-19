@@ -1,0 +1,35 @@
+<%= link_to("<< Back to Ratings", {:controller => 'ratings', :action => 'index'}, :class => 'back-link') %>
+
+<% @page_title = "Review" %>
+
+<div class="review index">
+    <h2>Review</h2>
+        <%=  %>
+
+        <% if @reviews.blank? %>
+            <%= link_to(image_tag('plus_sign.png', :size=>'11x11', :alt => '+') + " Create Review", {:action => 'new', :rating_id => @rating.id}, :class => 'action new') %>
+        <% end %>
+
+    <table class="listing" summary="Review">
+        <tr class="header">
+            <th>ID</th>
+            <th>Subject</th>
+            <th>Message</th>
+            <th>Rating ID</th>
+            <th>Actions</th>
+        </tr>
+        <% @reviews.each do |review| %>
+        <tr>
+            <td><%= review.id %></td>
+            <td><%= review.subject %></td>
+            <td><%= review.message %></td>
+            <td><%= review.rating_id %></td>
+            <td class="actions">
+                <%= link_to("Show", {:action => 'show' , :id => review.id, :rating_id => @rating.id},  :class => 'action show') %>
+                <%= link_to("Edit",{:action => 'edit' , :id => review.id, :rating_id => @rating.id}, :class => 'action edit') %>
+                <%= link_to("Delete", {:action => 'delete', :id => review.id, :rating_id => @rating.id}, :class => 'action delete') %>
+            </td>
+        </tr>
+        <% end %>
+    </table>
+</div>

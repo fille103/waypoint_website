@@ -1,0 +1,31 @@
+<%= link_to("<< Back to List", {:action => 'index', :registered_user_id => @registered_user.id}, :class => 'back-link') %>
+
+<div class="ratings show">
+    <h2>Show Ratings</h2>
+    <table summary="Rating detail view">
+        <tr>
+            <th>ID</th>
+            <td><%= @rating.id %></td>
+        </tr>
+        <tr>
+            <th>Rating</th>
+            <td><%= @rating.rating %></td>
+        </tr>
+        <tr>
+            <th>Registered User ID</th>
+            <td><%= @rating.registered_user_id %></td>
+        </tr>
+        <tr>
+            <th>Version ID</th>
+            <td><%= @rating.version_id %></td>
+        </tr>
+        <tr>
+            <th>Created</th>
+            <td><%= @rating.created_at %></td>
+        </tr>
+        <tr>
+            <th>Updated</th>
+            <td><%= @rating.updated_at %></td>
+        </tr>
+    </table>
+</div>

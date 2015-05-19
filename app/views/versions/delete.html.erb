@@ -1,0 +1,25 @@
+<%= link_to("<< Back to List", {:action => 'index'}, :class => 'back-link') %>
+
+<div class="versions delete">
+    <h2>Confirm Deletion</h2>
+
+    <table summary="Version detail view">
+        <tr>
+            <th>ID</th>
+            <td><%= @version.id %></td>
+        </tr>
+        <tr>
+            <th>Version</th>
+            <td><%= @version.version %></td>
+        </tr>
+    </table>
+
+    <%= form_for(:version, :url => {:action => 'destroy', :id => @version.id}) do |f| %>
+
+    <div class="form-buttons">
+        <%= submit_tag("Delete Version") %>
+    </div>
+
+    <% end %>
+
+</div>

@@ -1,0 +1,32 @@
+<%= link_to("<< Back to Versions", {:controller => 'versions', :action => 'index'}, :class => 'back-link') %>
+
+<% @page_title = "Features" %>
+
+<div class="features index">
+    <h2>Features</h2>
+        <%=  %>
+
+        <%= link_to(image_tag('plus_sign.png', :size=>'11x11', :alt => '+') + " Add New Feature", {:action => 'new', :version_id => @version.id}, :class => 'action new') %>
+
+    <table class="listing" summary="Features">
+        <tr class="header">
+            <th>ID</th>
+            <th>Name</th>
+            <th>Version ID</th>
+            <th>Actions</th>
+        </tr>
+        <% @features.each do |feature| %>
+        <tr>
+            <td><%= feature.id %></td>
+            <td><%= feature.name %></td>
+            <td><%= feature.version_id %></td>
+            <td class="actions">
+                <%= link_to("Description", {:controller => 'descriptions', :feature_id => feature.id},  :class => 'action index') %>
+                <%= link_to("Show", {:action => 'show' , :id => feature.id, :version_id => @version.id},  :class => 'action show') %>
+                <%= link_to("Edit",{:action => 'edit' , :id => feature.id, :version_id => @version.id}, :class => 'action edit') %>
+                <%= link_to("Delete", {:action => 'delete', :id => feature.id, :version_id => @version.id}, :class => 'action delete') %>
+            </td>
+        </tr>
+        <% end %>
+    </table>
+</div>

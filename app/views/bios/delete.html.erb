@@ -1,4 +1,4 @@
-<%= link_to("<< Back to List", {:action => 'index', :team_member_id => @team_member.id, :admin_id => @team_member.admin_id}, :class => 'back-link') %>
+<%= link_to("<< Back to List", {:action => 'index', :team_member_id => @team_member.id}, :class => 'back-link') %>
 
 <div class="bio delete">
     <h2>Confirm Deletion</h2>
@@ -10,19 +10,15 @@
         </tr>
         <tr>
             <th>Biography</th>
-            <td><%= @bio.biography %></td>
+            <td><%= @bio.bio %></td>
         </tr>
         <tr>
             <th>Team Member ID</th>
             <td><%= @bio.team_member_id %></td>
         </tr>
-        <tr>
-            <th>Admin ID</th>
-            <td><%= @bio.admin_id %></td>
-        </tr>
     </table>
 
-    <%= form_for(:bio, :url => {:action => 'destroy', :id => @bio.id, :team_member_id => @team_member.id, :admin_id => @team_member.admin_id}) do |f| %>
+    <%= form_for(:bio, :url => {:action => 'destroy', :id => @bio.id, :team_member_id => @team_member.id}) do |f| %>
 
     <div class="form-buttons">
         <%= submit_tag("Delete Biography") %>

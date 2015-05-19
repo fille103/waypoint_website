@@ -1,10 +1,9 @@
 class RegisteredUser < ActiveRecord::Base
     
-    before_destroy :delete_related_feedbacks
-    after_save :touch_admin
+    before_destroy :delete_related_feedbacks_ratings
     
     has_many :feedbacks
-	belongs_to :admin
+    has_many :ratings
     
     validates_presence_of :username
     validates_presence_of :password
@@ -17,12 +16,15 @@ class RegisteredUser < ActiveRecord::Base
     scope :search, lambda { |query| where(["name LIKE ?", "%#{query}%"])}
     
     private
-    def touch_admin
-        admin.touch
-    end
-    def delete_related_feedbacks
+    def delete_related_feedbacks_ratings
         self.feedbacks.each do |feedback|
             feedback.destroy
+        end
+        self.ratings.each do |rating|
+            if (!rating.review.nil?)
+                rating.review.destroy
+            end
+            rating.destroy
         end
     end
 end

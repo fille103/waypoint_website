@@ -7,7 +7,7 @@
         <%=  %>
 
         <% if @bios.blank? %>
-            <%= link_to(image_tag('plus_sign.png', :size=>'11x11', :alt => '+') + " Create Biography", {:action => 'new', :team_member_id => @team_member.id, :admin_id => @team_member.admin_id}, :class => 'action new') %>
+            <%= link_to(image_tag('plus_sign.png', :size=>'11x11', :alt => '+') + " Create Biography", {:action => 'new', :team_member_id => @team_member.id}, :class => 'action new') %>
         <% end %>
 
     <table class="listing" summary="Bio">
@@ -15,19 +15,17 @@
             <th>ID</th>
             <th>Biography</th>
             <th>Team Member ID</th>
-            <th>Admin ID</th>
             <th>Actions</th>
         </tr>
         <% @bios.each do |bio| %>
         <tr>
             <td><%= bio.id %></td>
-            <td><%= bio.biography %></td>
+            <td><%= bio.bio %></td>
             <td><%= bio.team_member_id %></td>
-            <td><%= bio.admin_id %></td>
             <td class="actions">
-                <%= link_to("Show", {:action => 'show' , :id => bio.id, :team_member_id => @team_member.id, :admin_id => @team_member.admin_id},  :class => 'action show') %>
-                <%= link_to("Edit",{:action => 'edit' , :id => bio.id, :team_member_id => @team_member.id, :admin_id => @team_member.admin_id}, :class => 'action edit') %>
-                <%= link_to("Delete", {:action => 'delete', :id => bio.id, :team_member_id => @team_member.id, :admin_id => @team_member.admin_id}, :class => 'action delete') %>
+                <%= link_to("Show", {:action => 'show' , :id => bio.id, :team_member_id => @team_member.id},  :class => 'action show') %>
+                <%= link_to("Edit",{:action => 'edit' , :id => bio.id, :team_member_id => @team_member.id}, :class => 'action edit') %>
+                <%= link_to("Delete", {:action => 'delete', :id => bio.id, :team_member_id => @team_member.id}, :class => 'action delete') %>
             </td>
         </tr>
         <% end %>

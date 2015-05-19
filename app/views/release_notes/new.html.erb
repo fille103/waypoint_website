@@ -1,0 +1,11 @@
+<%= link_to("<< Back to List", {:action => 'index', :version_id => @version.id}, :class => 'back-link') %>
+
+<div class="release_notes new">
+    <h2>Create Release Note</h2>
+    <%= form_for(:release_note, :url => {:action => 'create', :version_id => @version.id}) do |f| %>
+        <%= render(:partial => "form", :locals => {:f => f}) %>
+        <div class="form-buttons">
+            <%= submit_tag("Create Release Note") %>
+        </div>
+    <% end %>
+</div>

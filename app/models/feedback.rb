@@ -3,7 +3,6 @@ class Feedback < ActiveRecord::Base
     after_save :touch_registered_user
         
     belongs_to :registered_user
-    belongs_to :admin
     
     validates_presence_of :feedback
     

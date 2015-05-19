@@ -1,10 +1,11 @@
 class BiosController < ApplicationController
     
-    before_action :find_team_member
     layout "admin"
     
+    before_action :find_team_member
+    
     def index
-        @bios = Bio.where(team_member_id: @team_member.id, admin_id: @team_member.admin_id);
+        @bios = Bio.where(team_member_id: @team_member.id);
     end
     
     def show
@@ -12,7 +13,7 @@ class BiosController < ApplicationController
     end
     
     def new
-        @bio = Bio.new({:biography => "Default", :team_member_id => @team_member.id, :admin_id => @team_member.admin_id})
+        @bio = Bio.new({:bio => "Default", :team_member_id => @team_member.id})
         @bio_count = Bio.count + 1
     end
     
@@ -23,7 +24,7 @@ class BiosController < ApplicationController
         if @bio.save
             # If save succeeds, redirect to the index action
             flash[:notice] = "Bio created successfully."
-            redirect_to(:action => 'index', :team_member_id => @team_member.id, :admin_id => @team_member.admin_id)
+            redirect_to(:action => 'index', :team_member_id => @team_member.id)
             else
             # If save fails, redisplay the form so user can fix problems
             flash[:notice] = "Could not create bio."
@@ -44,7 +45,7 @@ class BiosController < ApplicationController
         if @bio.update_attributes(bio_params)
             # If update succeeds, redirect to the index action
             flash[:notice] = "Bio updated successfully."
-            redirect_to(:action => 'show', :id => @bio.id, :team_member_id => @team_member.id, :admin_id => @team_member.admin_id)
+            redirect_to(:action => 'show', :id => @bio.id, :team_member_id => @team_member.id)
             else
             # If update fails, redisplay the form so user can fix problems
             flash[:notice] = "Could not update bio."
@@ -61,13 +62,13 @@ class BiosController < ApplicationController
         # Don't need to use an instance variable, can use a local variable
         bio = Bio.find(params[:id]).destroy
         flash[:notice] = "Bio was destroyed successfully."
-        redirect_to(:action => 'index', :team_member_id => @team_member.id, :admin_id => @team_member.admin_id)
+        redirect_to(:action => 'index', :team_member_id => @team_member.id)
     end
     
     private
     def bio_params
-        defaults = {:team_member_id => @team_member.id, :admin_id => @team_member.admin_id}
-        params.require(:bio).permit(:biography).merge(defaults)
+        defaults = {:team_member_id => @team_member.id}
+        params.require(:bio).permit(:bio).merge(defaults)
     end
     def find_team_member
         if params[:team_member_id]

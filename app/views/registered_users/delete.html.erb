@@ -1,4 +1,4 @@
-<%= link_to("<< Back to List", {:action => 'index', :admin_id => @admin.id}, :class => 'back-link') %>
+<%= link_to("<< Back to List", {:action => 'index'}, :class => 'back-link') %>
 
 <div class="registered_users delete">
     <h2>Confirm Deletion</h2>
@@ -24,13 +24,9 @@
             <th>Subscribed</th>
             <td><%= @registered_user.subscribed %></td>
         </tr>
-        <tr>
-            <th>Admin ID</th>
-            <td><%= @registered_user.admin_id %></td>
-        </tr>
     </table>
 
-    <%= form_for(:registered_user, :url => {:action => 'destroy', :id => @registered_user.id, :admin_id => @admin.id}) do |f| %>
+    <%= form_for(:registered_user, :url => {:action => 'destroy', :id => @registered_user.id}) do |f| %>
 
     <div class="form-buttons">
         <%= submit_tag("Delete Registered User") %>

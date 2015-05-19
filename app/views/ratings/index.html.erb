@@ -1,0 +1,33 @@
+<%= link_to("<< Back to Registered Users", {:controller => 'registered_users', :action => 'index', :admin_id => @registered_user.admin_id}, :class => 'back-link') %>
+
+<% @page_title = "Rating" %>
+
+<div class="rating index">
+    <h2>Rating</h2>
+        <%=  %>
+
+        <%= link_to(image_tag('plus_sign.png', :size=>'11x11', :alt => '+') + " Add New Rating", {:action => 'new', :registered_user_id => @registered_user.id}, :class => 'action new') %>
+
+    <table class="listing" summary="Rating">
+        <tr class="header">
+            <th>ID</th>
+            <th>Rating</th>
+            <th>Registered User ID</th>
+            <th>Version ID</th>
+            <th>Actions</th>
+        </tr>
+        <% @ratings.each do |rating| %>
+        <tr>
+            <td><%= rating.id %></td>
+            <td><%= rating.rating %></td>
+            <td><%= rating.registered_user_id %></td>
+            <td><%= rating.version_id %></td>
+            <td class="actions">
+                <%= link_to("Show", {:action => 'show' , :id => rating.id, :registered_user_id => @registered_user.id},  :class => 'action show') %>
+                <%= link_to("Edit",{:action => 'edit' , :id => rating.id, :registered_user_id => @registered_user.id}, :class => 'action edit') %>
+                <%= link_to("Delete", {:action => 'delete', :id => rating.id, :registered_user_id => @registered_user.id}, :class => 'action delete') %>
+            </td>
+        </tr>
+        <% end %>
+    </table>
+</div>

@@ -1,4 +1,4 @@
-<%= link_to("<< Back to List", {:action => 'index', :admin_id => @admin.id}, :class => 'back-link') %>
+<%= link_to("<< Back to List", {:action => 'index'}, :class => 'back-link') %>
 
 <div class="contact_information show">
     <h2>Show Contact Information</h2>
@@ -30,10 +30,6 @@
         <tr>
             <th>Email</th>
             <td><%= @contact_information.email %></td>
-        </tr>
-        <tr>
-            <th>Admin ID</th>
-            <td><%= @contact_information.admin_id %></td>
         </tr>
         <tr>
             <th>Created</th>

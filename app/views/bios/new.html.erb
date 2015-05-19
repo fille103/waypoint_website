@@ -1,8 +1,8 @@
-<%= link_to("<< Back to List", {:action => 'index', :team_member_id => @team_member.id, :admin_id => @team_member.admin_id}, :class => 'back-link') %>
+<%= link_to("<< Back to List", {:action => 'index', :team_member_id => @team_member.id}, :class => 'back-link') %>
 
 <div class="bio new">
     <h2>Create Biography</h2>
-    <%= form_for(:bio, :url => {:action => 'create', :team_member_id => @team_member.id, :admin_id => @team_member.admin_id}) do |f| %>
+    <%= form_for(:bio, :url => {:action => 'create', :team_member_id => @team_member.id}) do |f| %>
         <%= render(:partial => "form", :locals => {:f => f}) %>
         <div class="form-buttons">
             <%= submit_tag("Create Biography") %>

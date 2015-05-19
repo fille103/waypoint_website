@@ -1,0 +1,11 @@
+<%= link_to("<< Back to List", {:action => 'index'}, :class => 'back-link') %>
+
+<div class="versions new">
+    <h2>Create Version</h2>
+    <%= form_for(:version, :url => {:action => 'create'}) do |f| %>
+        <%= render(:partial => "form", :locals => {:f => f}) %>
+        <div class="form-buttons">
+            <%= submit_tag("Create Version") %>
+        </div>
+    <% end %>
+</div>

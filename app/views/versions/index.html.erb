@@ -1,0 +1,31 @@
+<%= link_to("<< Back to Menu", {:controller => 'access'}, :class => 'back-link') %>
+
+<% @page_title = "Versions" %>
+
+<div class="versions index">
+    <h2>Versions</h2>
+        <%=  %>
+
+        <%= link_to(image_tag('plus_sign.png', :size=>'11x11', :alt => '+') + " Add New Version", {:action => 'new'}, :class => 'action new') %>
+
+    <table class="listing" summary="Versions">
+        <tr class="header">
+            <th>ID</th>
+            <th>Version</th>
+            <th>Actions</th>
+        </tr>
+        <% @versions.each do |version| %>
+        <tr>
+            <td><%= version.id %></td>
+            <td><%= version.version %></td>
+            <td class="actions">
+                <%= link_to("Features", {:controller => 'features', :version_id => version.id},  :class => 'action index') %>
+                <%= link_to("Release Notes", {:controller => 'release_notes', :version_id => version.id},  :class => 'action index') %>
+                <%= link_to("Show", {:action => 'show' , :id => version.id},  :class => 'action show') %>
+                <%= link_to("Edit",{:action => 'edit' , :id => version.id}, :class => 'action edit') %>
+                <%= link_to("Delete", {:action => 'delete', :id => version.id}, :class => 'action delete') %>
+            </td>
+        </tr>
+        <% end %>
+    </table>
+</div>

@@ -1,0 +1,27 @@
+<%= link_to("<< Back to List", {:action => 'index', :feature_id => @feature.id}, :class => 'back-link') %>
+
+<div class="description show">
+    <h2>Show Description</h2>
+    <table summary="Description detail view">
+        <tr>
+            <th>ID</th>
+            <td><%= @description.id %></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td><%= @description.description %></td>
+        </tr>
+        <tr>
+            <th>Feature ID</th>
+            <td><%= @description.feature_id %></td>
+        </tr>
+        <tr>
+            <th>Created</th>
+            <td><%= @description.created_at %></td>
+        </tr>
+        <tr>
+            <th>Updated</th>
+            <td><%= @description.updated_at %></td>
+        </tr>
+    </table>
+</div>

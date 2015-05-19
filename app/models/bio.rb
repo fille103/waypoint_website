@@ -3,9 +3,8 @@ class Bio < ActiveRecord::Base
     after_save :touch_team_member
     
     belongs_to :team_member
-    belongs_to :admin
     
-    validates_presence_of :biography
+    validates_presence_of :bio
     
 	scope :visible, lambda {where(:visible => true)}
     scope :invisible, lambda {where(:visible => false)}

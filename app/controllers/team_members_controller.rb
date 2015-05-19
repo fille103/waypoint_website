@@ -1,10 +1,11 @@
 class TeamMembersController < ApplicationController
     
-    before_action :find_admin
     layout "admin"
     
+    before_action :find_admin
+    
     def index
-        @team_members = @admin.team_members.sorted
+        TeamMember.where(admin_id: @admin.id);
     end
     
     def show
@@ -47,6 +48,7 @@ class TeamMembersController < ApplicationController
             redirect_to(:action => 'show', :id => @team_member.id, :admin_id => @admin.id)
             else
             # If update fails, redisplay the form so user can fix problems
+            flash[:notice] = "Could not update team member."
             @team_member_count = TeamMember.count
             render('edit')
         end

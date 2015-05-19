@@ -1,0 +1,29 @@
+<%= link_to("<< Back to List", {:action => 'index', :version_id => @version.id}, :class => 'back-link') %>
+
+<div class="release_notes delete">
+    <h2>Confirm Deletion</h2>
+
+    <table summary="Release note detail view">
+        <tr>
+            <th>ID</th>
+            <td><%= @release_note.id %></td>
+        </tr>
+        <tr>
+            <th>Release Note</th>
+            <td><%= @release_note.note %></td>
+        </tr>
+        <tr>
+            <th>Version ID</th>
+            <td><%= @release_note.version_id %></td>
+        </tr>
+    </table>
+
+    <%= form_for(:release_note, :url => {:action => 'destroy', :id => @release_note.id, :version_id => @version.id}) do |f| %>
+
+    <div class="form-buttons">
+        <%= submit_tag("Delete Release Note") %>
+    </div>
+
+    <% end %>
+
+</div>

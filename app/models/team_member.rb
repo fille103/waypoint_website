@@ -17,7 +17,9 @@ class TeamMember < ActiveRecord::Base
     
     private
     def touch_admin
-        admin.touch
+        if (!admin.nil?)
+            admin.touch
+        end
     end
     def delete_related_bio
         if (!self.bio.nil?)

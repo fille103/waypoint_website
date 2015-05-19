@@ -1,8 +1,8 @@
-<%= link_to("<< Back to List", {:action => 'index', :admin_id => @admin.id}, :class => 'back-link') %>
+<%= link_to("<< Back to List", {:action => 'index'}, :class => 'back-link') %>
 
 <div class="contact_information new">
     <h2>Create Contact Information</h2>
-    <%= form_for(:contact_information, :url => {:action => 'create', :admin_id => @admin.id}) do |f| %>
+    <%= form_for(:contact_information, :url => {:action => 'create'}) do |f| %>
         <%= render(:partial => "form", :locals => {:f => f}) %>
         <div class="form-buttons">
             <%= submit_tag("Create Contact Information") %>

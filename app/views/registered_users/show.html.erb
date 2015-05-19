@@ -1,4 +1,4 @@
-<%= link_to("<< Back to List", {:action => 'index', :admin_id => @admin.id}, :class => 'back-link') %>
+<%= link_to("<< Back to List", {:action => 'index'}, :class => 'back-link') %>
 
 <div class="registered_users show">
     <h2>Show Registered User</h2>
@@ -22,10 +22,6 @@
         <tr>
             <th>Subscribed</th>
             <td><%= @registered_user.subscribed %></td>
-        </tr>
-        <tr>
-            <th>Admin ID</th>
-            <td><%= @registered_user.admin_id %></td>
         </tr>
         <tr>
             <th>Created</th>

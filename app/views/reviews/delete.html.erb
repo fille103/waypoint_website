@@ -1,0 +1,33 @@
+<%= link_to("<< Back to List", {:action => 'index', :rating_id => @rating.id}, :class => 'back-link') %>
+
+<div class="review delete">
+    <h2>Confirm Deletion</h2>
+
+    <table summary="Review detail view">
+        <tr>
+            <th>ID</th>
+            <td><%= @review.id %></td>
+        </tr>
+        <tr>
+            <th>Subject</th>
+            <td><%= @review.subject %></td>
+        </tr>
+        <tr>
+            <th>Message</th>
+            <td><%= @review.message %></td>
+        </tr>
+        <tr>
+            <th>Rating ID</th>
+            <td><%= @review.rating_id %></td>
+        </tr>
+    </table>
+
+    <%= form_for(:review, :url => {:action => 'destroy', :id => @review.id, :rating_id => @rating.id}) do |f| %>
+
+    <div class="form-buttons">
+        <%= submit_tag("Delete Review") %>
+    </div>
+
+    <% end %>
+
+</div>

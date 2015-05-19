@@ -1,4 +1,4 @@
-<%= link_to("<< Back to Admins", {:controller => 'admins', :action => 'index'}, :class => 'back-link') %>
+<%= link_to("<< Back to Menu", {:controller => 'access'}, :class => 'back-link') %>
 
 <% @page_title = "RegisteredUsers" %>
 
@@ -6,7 +6,7 @@
     <h2>Registered Users</h2>
         <%=  %>
 
-        <%= link_to(image_tag('plus_sign.png', :size=>'11x11', :alt => '+') + " Add New Registered User", {:action => 'new', :admin_id => @admin.id}, :class => 'action new') %>
+        <%= link_to(image_tag('plus_sign.png', :size=>'11x11', :alt => '+') + " Add New Registered User", {:action => 'new'}, :class => 'action new') %>
 
     <table class="listing" summary="Registered users">
         <tr class="header">
@@ -15,7 +15,6 @@
             <th>Password</th>
             <th>Email</th>
             <th>Subscribed</th>
-            <th>Admin ID</th>
             <th>Actions</th>
         </tr>
         <% @registered_users.each do |registered_user| %>
@@ -25,12 +24,12 @@
             <td><%= registered_user.password %></td>
             <td><%= registered_user.email %></td>
             <td><%= registered_user.subscribed %></td>
-            <td><%= registered_user.admin_id %></td>
             <td class="actions">
-                <%= link_to("Feedback", {:controller => 'feedbacks', :registered_user_id => registered_user.id, :admin_id => registered_user.admin_id},  :class => 'action index') %>
-                <%= link_to("Show", {:action => 'show' , :id => registered_user.id, :admin_id => @admin.id},  :class => 'action show') %>
-                <%= link_to("Edit",{:action => 'edit' , :id => registered_user.id, :admin_id => @admin.id}, :class => 'action edit') %>
-                <%= link_to("Delete", {:action => 'delete', :id => registered_user.id, :admin_id => @admin.id}, :class => 'action delete') %>
+                <%= link_to("Feedback", {:controller => 'feedbacks', :registered_user_id => registered_user.id},  :class => 'action index') %>
+                <%= link_to("Rating", {:controller => 'ratings', :registered_user_id => registered_user.id},  :class => 'action index') %>
+                <%= link_to("Show", {:action => 'show' , :id => registered_user.id},  :class => 'action show') %>
+                <%= link_to("Edit",{:action => 'edit' , :id => registered_user.id}, :class => 'action edit') %>
+                <%= link_to("Delete", {:action => 'delete', :id => registered_user.id}, :class => 'action delete') %>
             </td>
         </tr>
         <% end %>

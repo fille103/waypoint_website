@@ -1,0 +1,14 @@
+<%= link_to("<< Back to List", {:action => 'index', :feature_id => @feature.id}, :class => 'back-link') %>
+
+<div class="description edit">
+    <h2>Update Description</h2>
+
+    <%= form_for(:description, :url => {:action => 'update', :id => @description.id, :feature_id => @feature.id}) do |f| %>
+    <%= render(:partial => "form", :locals => {:f => f}) %>
+
+    <div class="form-buttons">
+        <%= submit_tag("Update Description") %>
+    </div>
+
+    <% end %>
+</div>

@@ -1,0 +1,11 @@
+<%= link_to("<< Back to List", {:action => 'index', :registered_user_id => @registered_user.id}, :class => 'back-link') %>
+
+<div class="ratings new">
+    <h2>Create Rating</h2>
+    <%= form_for(:rating, :url => {:action => 'create', :registered_user_id => @registered_user.id}) do |f| %>
+        <%= render(:partial => "form", :locals => {:f => f}) %>
+        <div class="form-buttons">
+            <%= submit_tag("Create Rating") %>
+        </div>
+    <% end %>
+</div>

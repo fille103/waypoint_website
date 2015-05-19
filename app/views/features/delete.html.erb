@@ -1,0 +1,29 @@
+<%= link_to("<< Back to List", {:action => 'index', :version_id => @version.id}, :class => 'back-link') %>
+
+<div class="features delete">
+    <h2>Confirm Deletion</h2>
+
+    <table summary="Feature detail view">
+        <tr>
+            <th>ID</th>
+            <td><%= @feature.id %></td>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <td><%= @feature.name %></td>
+        </tr>
+        <tr>
+            <th>Version ID</th>
+            <td><%= @feature.version_id %></td>
+        </tr>
+    </table>
+
+    <%= form_for(:feature, :url => {:action => 'destroy', :id => @feature.id, :version_id => @version.id}) do |f| %>
+
+    <div class="form-buttons">
+        <%= submit_tag("Delete Feature") %>
+    </div>
+
+    <% end %>
+
+</div>

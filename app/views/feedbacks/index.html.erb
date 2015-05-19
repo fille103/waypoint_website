@@ -6,14 +6,13 @@
     <h2>Feedback</h2>
         <%=  %>
 
-        <%= link_to(image_tag('plus_sign.png', :size=>'11x11', :alt => '+') + " Add New Feedback", {:action => 'new', :registered_user_id => @registered_user.id, :admin_id => @registered_user.admin_id}, :class => 'action new') %>
+        <%= link_to(image_tag('plus_sign.png', :size=>'11x11', :alt => '+') + " Add New Feedback", {:action => 'new', :registered_user_id => @registered_user.id}, :class => 'action new') %>
 
     <table class="listing" summary="Feedback">
         <tr class="header">
             <th>ID</th>
             <th>Feedback</th>
             <th>Registered User ID</th>
-            <th>Admin ID</th>
             <th>Actions</th>
         </tr>
         <% @feedbacks.each do |feedback| %>
@@ -21,11 +20,10 @@
             <td><%= feedback.id %></td>
             <td><%= feedback.feedback %></td>
             <td><%= feedback.registered_user_id %></td>
-            <td><%= feedback.admin_id %></td>
             <td class="actions">
-                <%= link_to("Show", {:action => 'show' , :id => feedback.id, :registered_user_id => @registered_user.id, :admin_id => @registered_user.admin_id},  :class => 'action show') %>
-                <%= link_to("Edit",{:action => 'edit' , :id => feedback.id, :registered_user_id => @registered_user.id, :admin_id => @registered_user.admin_id}, :class => 'action edit') %>
-                <%= link_to("Delete", {:action => 'delete', :id => feedback.id, :registered_user_id => @registered_user.id, :admin_id => @registered_user.admin_id}, :class => 'action delete') %>
+                <%= link_to("Show", {:action => 'show' , :id => feedback.id, :registered_user_id => @registered_user.id},  :class => 'action show') %>
+                <%= link_to("Edit",{:action => 'edit' , :id => feedback.id, :registered_user_id => @registered_user.id}, :class => 'action edit') %>
+                <%= link_to("Delete", {:action => 'delete', :id => feedback.id, :registered_user_id => @registered_user.id}, :class => 'action delete') %>
             </td>
         </tr>
         <% end %>

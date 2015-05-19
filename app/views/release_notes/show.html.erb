@@ -1,0 +1,27 @@
+<%= link_to("<< Back to List", {:action => 'index', :version_id => @version.id}, :class => 'back-link') %>
+
+<div class="release_notes show">
+    <h2>Show Release Note</h2>
+    <table summary="Release note detail view">
+        <tr>
+            <th>ID</th>
+            <td><%= @release_note.id %></td>
+        </tr>
+        <tr>
+            <th>Release Note</th>
+            <td><%= @release_note.note %></td>
+        </tr>
+        <tr>
+            <th>Version ID</th>
+            <td><%= @release_note.version_id %></td>
+        </tr>
+        <tr>
+            <th>Created</th>
+            <td><%= @release_note.created_at %></td>
+        </tr>
+        <tr>
+            <th>Updated</th>
+            <td><%= @release_note.updated_at %></td>
+        </tr>
+    </table>
+</div>

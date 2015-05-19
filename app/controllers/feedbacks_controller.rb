@@ -1,7 +1,8 @@
 class FeedbacksController < ApplicationController
     
-    before_action :find_registered_user
     layout "admin"
+    
+    before_action :find_registered_user
     
     def index
         @feedbacks = @registered_user.feedbacks.sorted
@@ -12,7 +13,7 @@ class FeedbacksController < ApplicationController
     end
     
     def new
-        @feedback = Feedback.new({:feedback => "Default", :registered_user_id => @registered_user.id, :admin_id => @registered_user.admin_id})
+        @feedback = Feedback.new({:feedback => "Default", :registered_user_id => @registered_user.id})
         @feedback_count = Feedback.count + 1
     end
     
@@ -23,7 +24,7 @@ class FeedbacksController < ApplicationController
         if @feedback.save
             # If save succeeds, redirect to the index action
             flash[:notice] = "Feedback created successfully."
-            redirect_to(:action => 'index', :registered_user_id => @registered_user.id, :admin_id => @registered_user.admin_id)
+            redirect_to(:action => 'index', :registered_user_id => @registered_user.id)
             else
             # If save fails, redisplay the form so user can fix problems
             flash[:notice] = "Could not create feedback."
@@ -44,7 +45,7 @@ class FeedbacksController < ApplicationController
         if @feedback.update_attributes(feedback_params)
             # If update succeeds, redirect to the index action
             flash[:notice] = "Feedback updated successfully."
-            redirect_to(:action => 'show', :id => @feedback.id, :registered_user_id => @registered_user.id, :admin_id => @registered_user.admin_id)
+            redirect_to(:action => 'show', :id => @feedback.id, :registered_user_id => @registered_user.id)
             else
             # If update fails, redisplay the form so user can fix problems
             flash[:notice] = "Could not update feedback."
@@ -61,12 +62,12 @@ class FeedbacksController < ApplicationController
         # Don't need to use an instance variable, can use a local variable
         feedback = Feedback.find(params[:id]).destroy
         flash[:notice] = "Feedback was destroyed successfully."
-        redirect_to(:action => 'index', :registered_user_id => @registered_user.id, :admin_id => @registered_user.admin_id)
+        redirect_to(:action => 'index', :registered_user_id => @registered_user.id)
     end
     
     private
     def feedback_params
-        defaults = {:registered_user_id => @registered_user.id, :admin_id => @registered_user.admin_id}
+        defaults = {:registered_user_id => @registered_user.id}
         params.require(:feedback).permit(:feedback).merge(defaults)
     end
     def find_registered_user

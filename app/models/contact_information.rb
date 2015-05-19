@@ -1,9 +1,5 @@
 class ContactInformation < ActiveRecord::Base
     
-    after_save :touch_admin
-        
-    belongs_to :admin
-    
     validates_presence_of :street_address
     validates_presence_of :city
     validates_presence_of :state
@@ -16,9 +12,4 @@ class ContactInformation < ActiveRecord::Base
     scope :sorted, lambda { order("contact_informations.city ASC")}
     scope :newest_first, lambda { order("contact_informations.created_at DESC")}
     scope :search, lambda { |query| where(["name LIKE ?", "%#{query}%"])}
-    
-    private
-    def touch_admin
-        admin.touch
-    end
 end

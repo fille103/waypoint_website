@@ -5,7 +5,6 @@ class CreateRegisteredUsers < ActiveRecord::Migration
             t.string "password", null: false
             t.string "email"
             t.boolean "subscribed", null: false
-            t.integer "admin_id", null: false
             
             t.timestamps null: false
         end

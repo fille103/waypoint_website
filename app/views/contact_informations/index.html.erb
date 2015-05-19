@@ -1,4 +1,4 @@
-<%= link_to("<< Back to Admins", {:controller => 'admins', :action => 'index'}, :class => 'back-link') %>
+<%= link_to("<< Back to Menu", {:controller => 'access'}, :class => 'back-link') %>
 
 <% @page_title = "ContactInformation" %>
 
@@ -7,7 +7,7 @@
         <%=  %>
 
         <% if @contact_informations.blank? %>
-            <%= link_to(image_tag('plus_sign.png', :size=>'11x11', :alt => '+') + " Create Contact Information", {:action => 'new', :admin_id => @admin.id}, :class => 'action new') %>
+            <%= link_to(image_tag('plus_sign.png', :size=>'11x11', :alt => '+') + " Create Contact Information", {:action => 'new'}, :class => 'action new') %>
         <% end %>
 
     <table class="listing" summary="Contact information">
@@ -19,7 +19,6 @@
             <th>Zip</th>
             <th>Phone</th>
             <th>Email</th>
-            <th>Admin ID</th>
         </tr>
         <% @contact_informations.each do |contact_information| %>
         <tr>
@@ -30,11 +29,10 @@
             <td><%= contact_information.zip %></td>
             <td><%= contact_information.phone %></td>
             <td><%= contact_information.email %></td>
-            <td><%= contact_information.admin_id %></td>
             <td class="actions">
-                <%= link_to("Show", {:action => 'show' , :id => contact_information.id, :admin_id => @admin.id},  :class => 'action show') %>
-                <%= link_to("Edit",{:action => 'edit' , :id => contact_information.id, :admin_id => @admin.id}, :class => 'action edit') %>
-                <%= link_to("Delete", {:action => 'delete', :id => contact_information.id, :admin_id => @admin.id}, :class => 'action delete') %>
+                <%= link_to("Show", {:action => 'show' , :id => contact_information.id},  :class => 'action show') %>
+                <%= link_to("Edit",{:action => 'edit' , :id => contact_information.id}, :class => 'action edit') %>
+                <%= link_to("Delete", {:action => 'delete', :id => contact_information.id}, :class => 'action delete') %>
             </td>
         </tr>
         <% end %>
