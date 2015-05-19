@@ -5,7 +5,7 @@ class TeamMembersController < ApplicationController
     before_action :find_admin
     
     def index
-        TeamMember.where(admin_id: @admin.id);
+        @team_members = TeamMember.where(admin_id: @admin.id);
     end
     
     def show
