@@ -68,7 +68,7 @@ class RatingsController < ApplicationController
     private
     def rating_params
         defaults = {:registered_user_id => @registered_user.id}
-        params.require(:rating).permit(:rating).merge(defaults)
+        params.require(:rating).permit(:rating,:version_id).merge(defaults)
     end
     def find_registered_user
         if params[:registered_user_id]
